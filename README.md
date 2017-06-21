@@ -1,10 +1,10 @@
-# Ark JS
+# BPL JS
 
-Ark JS is a JavaScript library for sending Ark transactions. It's main benefit is that it does not require a locally installed Ark node, and instead utilizes the existing peers on the network. It can be used from the client as a [browserify](http://browserify.org/) compiled module, or on the server as a standard Node.js module.
+BPL JS is a JavaScript library for sending BPL transactions. It's main benefit is that it does not require a locally installed Ark node, and instead utilizes the existing peers on the network. It can be used from the client as a [browserify](http://browserify.org/) compiled module, or on the server as a standard Node.js module.
 
 ## Installation
 
-[![npm package](https://nodei.co/npm/arkjs.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/arkjs/)
+[![npm package](https://nodei.co/npm/BPLjs.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/BPLjs/)
 
 ## Tests
 
@@ -21,13 +21,13 @@ Tests written using mocha + schedule.js.
 On the client:
 
 ```html
-<script src="node_modules/arkjs/app.js"></script>
+<script src="node_modules/BPLjs/app.js"></script>
 ```
 
 On the server:
 
 ```js
-var ark = require('arkjs');
+var BPL = require('BPLjs');
 ```
 
 ### Generating a key pair
@@ -35,7 +35,7 @@ var ark = require('arkjs');
 To generate a public / private key pair from a given passphrase:
 
 ```js
-var keys = ark.crypto.getKeys("passphrase");
+var keys = BPL.crypto.getKeys("passphrase");
 ```
 
 Returning:
@@ -67,7 +67,7 @@ To create a signed transaction object, which can then be posted onto the network
 
 ```js
 var amount      = 1000 * Math.pow(10, 8); // 100000000000
-var transaction = ark.transaction.createTransaction("hxuG6XABWSN7swQ6Y8ner1CYHfTLeHLH6euB52fAtW6qRcbSfA", amount,null "passphrase", "secondPassphrase");
+var transaction = BPL.transaction.createTransaction("hxuG6XABWSN7swQ6Y8ner1CYHfTLeHLH6euB52fAtW6qRcbSfA", amount,null "passphrase", "secondPassphrase");
 ```
 
 Returning:
@@ -261,6 +261,7 @@ var transaction = ark.vote.createVote("secret", ["+58199578191950019299181920120
 
 The MIT License (MIT)
 
+Copyright (c) 2016 Blockpool<br />
 Copyright (c) 2016 Ark<br />
 Copyright (c) 2016 Lisk<br />
 Copyright (c) 2015 Crypti
