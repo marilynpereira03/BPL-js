@@ -1,15 +1,12 @@
 # Bpl JS
 
 Bpl JS is a JavaScript library for sending Bpl transactions. It's main benefit is that it does not require a locally installed Bpl node, and instead utilizes the existing peers on the network. It can be used from the client as a [browserify](http://browserify.org/) compiled module, or on the server as a standard Node.js module.
-=======
-# BPL JS
-
-BPL JS is a JavaScript library for sending BPL transactions. It's main benefit is that it does not require a locally installed Ark node, and instead utilizes the existing peers on the network. It can be used from the client as a [browserify](http://browserify.org/) compiled module, or on the server as a standard Node.js module.
->>>>>>> e4c6b1bb913e7db2f672b8e827a90a36a8e1003c
 
 ## Installation
 
-[![npm package](https://nodei.co/npm/BPLjs.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/BPLjs/)
+```
+npm install
+```
 
 ## Tests
 
@@ -32,11 +29,7 @@ On the client:
 On the server:
 
 ```js
-<<<<<<< HEAD
-var bpl = require('arkjs');
-=======
 var BPL = require('BPLjs');
->>>>>>> e4c6b1bb913e7db2f672b8e827a90a36a8e1003c
 ```
 
 ### Generating a key pair
@@ -44,11 +37,7 @@ var BPL = require('BPLjs');
 To generate a public / private key pair from a given passphrase:
 
 ```js
-<<<<<<< HEAD
-var keys = bpl.crypto.getKeys("passphrase");
-=======
 var keys = BPL.crypto.getKeys("passphrase");
->>>>>>> e4c6b1bb913e7db2f672b8e827a90a36a8e1003c
 ```
 
 Returning:
@@ -80,11 +69,7 @@ To create a signed transaction object, which can then be posted onto the network
 
 ```js
 var amount      = 1000 * Math.pow(10, 8); // 100000000000
-<<<<<<< HEAD
 var transaction = bpl.transaction.createTransaction("hxuG6XABWSN7swQ6Y8ner1CYHfTLeHLH6euB52fAtW6qRcbSfA", amount,null "passphrase", "secondPassphrase");
-=======
-var transaction = BPL.transaction.createTransaction("hxuG6XABWSN7swQ6Y8ner1CYHfTLeHLH6euB52fAtW6qRcbSfA", amount,null "passphrase", "secondPassphrase");
->>>>>>> e4c6b1bb913e7db2f672b8e827a90a36a8e1003c
 ```
 
 Returning:
@@ -94,7 +79,7 @@ Returning:
   type: 0, // Transaction type. 0 = Normal transaction.
   amount: 100000000000, // The amount to send expressed as an integer value.
   asset: {}, // Transaction asset, dependent on tx type.
-  fee: 100000000, // 0.1 ARK expressed as an integer value.
+  fee: 100000000, // 0.1 BPL expressed as an integer value.
   id: "500224999259823996", // Transaction ID.
   recipientId: "hxuG6XABWSN7swQ6Y8ner1CYHfTLeHLH6euB52fAtW6qRcbSfA", // Recipient ID.
   senderPublicKey: "56e106a1d4a53dbe22cac52fefd8fc4123cfb4ee482f8f25a4fc72eb459b38a5", // Sender's public key.
@@ -125,7 +110,7 @@ On the client using [jQuery](https://jquery.com/):
 ```js
 var nethash;
 $.ajax({
-  url: 'https://api.arknode.net/peer/transactions/',
+  url: 'https://api.bplnode.net/peer/transactions/',
   data: JSON.stringify({}),
   dataType: 'json',
   method: 'POST',
@@ -147,7 +132,7 @@ From a server using [Request](https://github.com/request/request):
 ```js
 var nethash;
 request({
-  url: 'https://api.arknode.net/peer/transactions',
+  url: 'https://api.bplnode.net/peer/transactions',
   json: { },
   method: 'POST',
   headers: {
@@ -189,7 +174,7 @@ var success = function(data) {
 };
 
 $.ajax({
-  url: 'https://api.arknode.net/peer/transactions',
+  url: 'https://api.bplnode.net/peer/transactions',
   data: JSON.stringify({ transaction: transaction }),
   dataType: 'json',
   method: 'POST',
@@ -217,7 +202,7 @@ var callback = function(error, response, body) {
 };
 
 request({
-  url: 'https://api.arknode.net/peer/transactions',
+  url: 'https://api.bplnode.net/peer/transactions',
   json: { transaction: transaction },
   method: 'POST',
   headers: {
@@ -280,12 +265,9 @@ var transaction = bpl.vote.createVote("secret", ["+58199578191950019299181920120
 
 The MIT License (MIT)
 
-<<<<<<< HEAD
 Copyright (c) 2016 Bpl<br />
-=======
 Copyright (c) 2016 Blockpool<br />
 Copyright (c) 2016 Ark<br />
->>>>>>> e4c6b1bb913e7db2f672b8e827a90a36a8e1003c
 Copyright (c) 2016 Lisk<br />
 Copyright (c) 2015 Crypti
 
@@ -294,3 +276,4 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
