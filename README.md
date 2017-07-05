@@ -1,6 +1,12 @@
+<<<<<<< HEAD
+# Bpl JS
+
+Bpl JS is a JavaScript library for sending Bpl transactions. It's main benefit is that it does not require a locally installed Bpl node, and instead utilizes the existing peers on the network. It can be used from the client as a [browserify](http://browserify.org/) compiled module, or on the server as a standard Node.js module.
+=======
 # BPL JS
 
 BPL JS is a JavaScript library for sending BPL transactions. It's main benefit is that it does not require a locally installed Ark node, and instead utilizes the existing peers on the network. It can be used from the client as a [browserify](http://browserify.org/) compiled module, or on the server as a standard Node.js module.
+>>>>>>> e4c6b1bb913e7db2f672b8e827a90a36a8e1003c
 
 ## Installation
 
@@ -27,7 +33,11 @@ On the client:
 On the server:
 
 ```js
+<<<<<<< HEAD
+var bpl = require('arkjs');
+=======
 var BPL = require('BPLjs');
+>>>>>>> e4c6b1bb913e7db2f672b8e827a90a36a8e1003c
 ```
 
 ### Generating a key pair
@@ -35,7 +45,11 @@ var BPL = require('BPLjs');
 To generate a public / private key pair from a given passphrase:
 
 ```js
+<<<<<<< HEAD
+var keys = bpl.crypto.getKeys("passphrase");
+=======
 var keys = BPL.crypto.getKeys("passphrase");
+>>>>>>> e4c6b1bb913e7db2f672b8e827a90a36a8e1003c
 ```
 
 Returning:
@@ -49,10 +63,10 @@ Returning:
 
 ### Generating an address
 
-To generate a unique Ark address from a given public key:
+To generate a unique Bpl address from a given public key:
 
 ```js
-var address = ark.crypto.getAddress("5d036a858ce89f844491762eb89e2bfbd50a4a0a0da658e4b2628b25b117ae09");
+var address = bpl.crypto.getAddress("5d036a858ce89f844491762eb89e2bfbd50a4a0a0da658e4b2628b25b117ae09");
 ```
 
 Returning:
@@ -67,7 +81,11 @@ To create a signed transaction object, which can then be posted onto the network
 
 ```js
 var amount      = 1000 * Math.pow(10, 8); // 100000000000
+<<<<<<< HEAD
+var transaction = bpl.transaction.createTransaction("hxuG6XABWSN7swQ6Y8ner1CYHfTLeHLH6euB52fAtW6qRcbSfA", amount,null "passphrase", "secondPassphrase");
+=======
 var transaction = BPL.transaction.createTransaction("hxuG6XABWSN7swQ6Y8ner1CYHfTLeHLH6euB52fAtW6qRcbSfA", amount,null "passphrase", "secondPassphrase");
+>>>>>>> e4c6b1bb913e7db2f672b8e827a90a36a8e1003c
 ```
 
 Returning:
@@ -108,7 +126,7 @@ On the client using [jQuery](https://jquery.com/):
 ```js
 var nethash;
 $.ajax({
-  url: 'https://login.ark.io/peer/transactions',
+  url: 'https://api.arknode.net/peer/transactions/',
   data: JSON.stringify({}),
   dataType: 'json',
   method: 'POST',
@@ -130,7 +148,7 @@ From a server using [Request](https://github.com/request/request):
 ```js
 var nethash;
 request({
-  url: 'https://login.ark.io/peer/transactions',
+  url: 'https://api.arknode.net/peer/transactions',
   json: { },
   method: 'POST',
   headers: {
@@ -172,7 +190,7 @@ var success = function(data) {
 };
 
 $.ajax({
-  url: 'https://login.ark.io/peer/transactions',
+  url: 'https://api.arknode.net/peer/transactions',
   data: JSON.stringify({ transaction: transaction }),
   dataType: 'json',
   method: 'POST',
@@ -200,7 +218,7 @@ var callback = function(error, response, body) {
 };
 
 request({
-  url: 'https://login.ark.io/peer/transactions',
+  url: 'https://api.arknode.net/peer/transactions',
   json: { transaction: transaction },
   method: 'POST',
   headers: {
@@ -234,26 +252,28 @@ If the transaction is deemed invalid, or an error is encountered, the receiving 
 #### Creating a delegate transaction
 
 ```js
-var transaction = ark.delegate.createDelegate("secret", "username", "secondSecret");
+var transaction = bpl.delegate.createDelegate("secret", "username", "secondSecret");
 ```
 
 #### Creating a second signature transaction
 
 ```js
-var transaction = ark.signature.createTransaction("secret", "secondSecret");
+var transaction = bpl.signature.createTransaction("secret", "secondSecret");
 ```
 
 #### Creating a vote transaction
 
 ```js
-var transaction = ark.vote.createVote("secret", ["+58199578191950019299181920120128129"], "secondSecret");
+var transaction = bpl.vote.createVote("secret", ["+58199578191950019299181920120128129"], "secondSecret");
 ```
 
 ***
 
 ## Authors
-- FX Thoorens <fx@ark.io>
-- Guillaume Verbal <doweig@ark.io>
+- Raj Singh <rsingh@blockpool.io>
+- Brandon Cook <bcook@blockpool.io>
+- FX Thoorens <fx@bpl.io>
+- Guillaume Verbal <doweig@bpl.io>
 - Boris Povod <boris@crypti.me>
 - Oliver Beddows <oliver@lisk.io>
 
@@ -261,8 +281,12 @@ var transaction = ark.vote.createVote("secret", ["+58199578191950019299181920120
 
 The MIT License (MIT)
 
+<<<<<<< HEAD
+Copyright (c) 2016 Bpl<br />
+=======
 Copyright (c) 2016 Blockpool<br />
 Copyright (c) 2016 Ark<br />
+>>>>>>> e4c6b1bb913e7db2f672b8e827a90a36a8e1003c
 Copyright (c) 2016 Lisk<br />
 Copyright (c) 2015 Crypti
 

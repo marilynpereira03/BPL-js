@@ -1,6 +1,6 @@
 var Buffer = require("buffer/").Buffer;
 var should = require("should");
-var ark = require("../../index.js");
+var bpl = require("../../index.js");
 var ECPair = require('../../lib/ecpair');
 
 var ecdsa = require('../../lib/ecdsa')
@@ -9,7 +9,7 @@ var curve = ecdsa.__curve
 
 describe("crypto.js", function () {
 
-  var crypto = ark.crypto;
+  var crypto = bpl.crypto;
 
   it("should be ok", function () {
     (crypto).should.be.ok;
@@ -318,8 +318,20 @@ describe("crypto.js", function () {
   });
 });
 
+describe("different networks", function () {
+
+  it("validate address on tesnet should be ok", function () {
+    bpl.crypto.setNetworkVersion(0x52);
+    bpl.crypto.getNetworkVersion().should.equal(0x52);
+    var validate = bpl.crypto.validateAddress("a6fpb1BJZq4otWiVsBcuLG1ZGs5WsqqQtH");
+    (validate).should.equal(true);
+    bpl.crypto.setNetworkVersion(0x17);
+    bpl.crypto.getNetworkVersion().should.equal(0x17);
+  });
+});
+
 describe("delegate.js", function () {
-  var delegate = ark.delegate;
+  var delegate = bpl.delegate;
 
   it("should be ok", function () {
     (delegate).should.be.ok;
@@ -350,8 +362,8 @@ describe("delegate.js", function () {
     });
 
     describe("returned delegate", function () {
-      var keys = ark.crypto.getKeys("secret");
-      var secondKeys = ark.crypto.getKeys("secret 2");
+      var keys = bpl.crypto.getKeys("secret");
+      var secondKeys = bpl.crypto.getKeys("secret 2");
 
       it("should be ok", function () {
         (trs).should.be.ok;
@@ -374,7 +386,7 @@ describe("delegate.js", function () {
       });
 
       // it("should have id equal 11636400490162225218", function () {
-      // 	(trs).should.have.property("id").and.type("string").and.equal('11636400490162225218');
+      //  (trs).should.have.property("id").and.type("string").and.equal('11636400490162225218');
       // });
 
       it("should have timestamp number", function () {
@@ -423,24 +435,24 @@ describe("delegate.js", function () {
       })
 
       it("should be signed correctly", function () {
-        var result = ark.crypto.verify(trs);
+        var result = bpl.crypto.verify(trs);
         (result).should.be.ok;
       });
 
       it("should be second signed correctly", function () {
-        var result = ark.crypto.verifySecondSignature(trs, secondKeys.publicKey);
+        var result = bpl.crypto.verifySecondSignature(trs, secondKeys.publicKey);
         (result).should.be.ok;
       });
 
       it("should not be signed correctly now", function () {
         trs.amount = 100;
-        var result = ark.crypto.verify(trs);
+        var result = bpl.crypto.verify(trs);
         (result).should.be.not.ok;
       });
 
       it("should not be second signed correctly now", function () {
         trs.amount = 100;
-        var result = ark.crypto.verifySecondSignature(trs, secondKeys.publicKey);
+        var result = bpl.crypto.verifySecondSignature(trs, secondKeys.publicKey);
         (result).should.be.not.ok;
       });
 
