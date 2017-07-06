@@ -1,10 +1,12 @@
-# Ark JS
+# Bpl JS
 
-Ark JS is a JavaScript library for sending Ark transactions. It's main benefit is that it does not require a locally installed Ark node, and instead utilizes the existing peers on the network. It can be used from the client as a [browserify](http://browserify.org/) compiled module, or on the server as a standard Node.js module.
+Bpl JS is a JavaScript library for sending Bpl transactions. It's main benefit is that it does not require a locally installed Bpl node, and instead utilizes the existing peers on the network. It can be used from the client as a [browserify](http://browserify.org/) compiled module, or on the server as a standard Node.js module.
 
 ## Installation
 
-[![npm package](https://nodei.co/npm/arkjs.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/arkjs/)
+```
+npm install
+```
 
 ## Tests
 
@@ -21,13 +23,13 @@ Tests written using mocha + schedule.js.
 On the client:
 
 ```html
-<script src="node_modules/arkjs/app.js"></script>
+<script src="node_modules/BPLjs/app.js"></script>
 ```
 
 On the server:
 
 ```js
-var ark = require('arkjs');
+var BPL = require('BPLjs');
 ```
 
 ### Generating a key pair
@@ -35,7 +37,7 @@ var ark = require('arkjs');
 To generate a public / private key pair from a given passphrase:
 
 ```js
-var keys = ark.crypto.getKeys("passphrase");
+var keys = BPL.crypto.getKeys("passphrase");
 ```
 
 Returning:
@@ -49,10 +51,10 @@ Returning:
 
 ### Generating an address
 
-To generate a unique Ark address from a given public key:
+To generate a unique Bpl address from a given public key:
 
 ```js
-var address = ark.crypto.getAddress("5d036a858ce89f844491762eb89e2bfbd50a4a0a0da658e4b2628b25b117ae09");
+var address = bpl.crypto.getAddress("5d036a858ce89f844491762eb89e2bfbd50a4a0a0da658e4b2628b25b117ae09");
 ```
 
 Returning:
@@ -67,7 +69,7 @@ To create a signed transaction object, which can then be posted onto the network
 
 ```js
 var amount      = 1000 * Math.pow(10, 8); // 100000000000
-var transaction = ark.transaction.createTransaction("hxuG6XABWSN7swQ6Y8ner1CYHfTLeHLH6euB52fAtW6qRcbSfA", amount,null "passphrase", "secondPassphrase");
+var transaction = bpl.transaction.createTransaction("hxuG6XABWSN7swQ6Y8ner1CYHfTLeHLH6euB52fAtW6qRcbSfA", amount,null "passphrase", "secondPassphrase");
 ```
 
 Returning:
@@ -77,7 +79,7 @@ Returning:
   type: 0, // Transaction type. 0 = Normal transaction.
   amount: 100000000000, // The amount to send expressed as an integer value.
   asset: {}, // Transaction asset, dependent on tx type.
-  fee: 100000000, // 0.1 ARK expressed as an integer value.
+  fee: 100000000, // 0.1 BPL expressed as an integer value.
   id: "500224999259823996", // Transaction ID.
   recipientId: "hxuG6XABWSN7swQ6Y8ner1CYHfTLeHLH6euB52fAtW6qRcbSfA", // Recipient ID.
   senderPublicKey: "56e106a1d4a53dbe22cac52fefd8fc4123cfb4ee482f8f25a4fc72eb459b38a5", // Sender's public key.
@@ -108,7 +110,7 @@ On the client using [jQuery](https://jquery.com/):
 ```js
 var nethash;
 $.ajax({
-  url: 'https://login.ark.io/peer/transactions',
+  url: 'https://api.bplnode.net/peer/transactions/',
   data: JSON.stringify({}),
   dataType: 'json',
   method: 'POST',
@@ -130,7 +132,7 @@ From a server using [Request](https://github.com/request/request):
 ```js
 var nethash;
 request({
-  url: 'https://login.ark.io/peer/transactions',
+  url: 'https://api.bplnode.net/peer/transactions',
   json: { },
   method: 'POST',
   headers: {
@@ -172,7 +174,7 @@ var success = function(data) {
 };
 
 $.ajax({
-  url: 'https://login.ark.io/peer/transactions',
+  url: 'https://api.bplnode.net/peer/transactions',
   data: JSON.stringify({ transaction: transaction }),
   dataType: 'json',
   method: 'POST',
@@ -200,7 +202,7 @@ var callback = function(error, response, body) {
 };
 
 request({
-  url: 'https://login.ark.io/peer/transactions',
+  url: 'https://api.bplnode.net/peer/transactions',
   json: { transaction: transaction },
   method: 'POST',
   headers: {
@@ -234,26 +236,28 @@ If the transaction is deemed invalid, or an error is encountered, the receiving 
 #### Creating a delegate transaction
 
 ```js
-var transaction = ark.delegate.createDelegate("secret", "username", "secondSecret");
+var transaction = bpl.delegate.createDelegate("secret", "username", "secondSecret");
 ```
 
 #### Creating a second signature transaction
 
 ```js
-var transaction = ark.signature.createTransaction("secret", "secondSecret");
+var transaction = bpl.signature.createTransaction("secret", "secondSecret");
 ```
 
 #### Creating a vote transaction
 
 ```js
-var transaction = ark.vote.createVote("secret", ["+58199578191950019299181920120128129"], "secondSecret");
+var transaction = bpl.vote.createVote("secret", ["+58199578191950019299181920120128129"], "secondSecret");
 ```
 
 ***
 
 ## Authors
-- FX Thoorens <fx@ark.io>
-- Guillaume Verbal <doweig@ark.io>
+- Raj Singh <rsingh@blockpool.io>
+- Brandon Cook <bcook@blockpool.io>
+- FX Thoorens <fx@bpl.io>
+- Guillaume Verbal <doweig@bpl.io>
 - Boris Povod <boris@crypti.me>
 - Oliver Beddows <oliver@lisk.io>
 
@@ -261,6 +265,8 @@ var transaction = ark.vote.createVote("secret", ["+58199578191950019299181920120
 
 The MIT License (MIT)
 
+Copyright (c) 2016 Bpl<br />
+Copyright (c) 2016 Blockpool<br />
 Copyright (c) 2016 Ark<br />
 Copyright (c) 2016 Lisk<br />
 Copyright (c) 2015 Crypti
@@ -270,3 +276,4 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+

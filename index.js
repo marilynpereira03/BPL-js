@@ -1,4 +1,4 @@
-ark = {
+bpl = {
 	crypto : require("./lib/transactions/crypto.js"),
 	delegate : require("./lib/transactions/delegate.js"),
 	signature : require("./lib/transactions/signature.js"),
@@ -6,6 +6,7 @@ ark = {
 	vote : require("./lib/transactions/vote.js"),
 	ipfs : require("./lib/transactions/ipfs.js"),
 	networks : require("./lib/networks.js"),
+	slots : require("./lib/time/slots.js"),
 
 	ECPair : require("./lib/ecpair.js"),
 	HDNode : require("./lib/hdnode.js"),
@@ -15,7 +16,7 @@ ark = {
 // extra aliases for bitcoinlib-js compatibility
 var libCrypto = require('./lib/crypto.js')
 for (var method in libCrypto) {
-	ark.crypto[method] = libCrypto[method]
+	bpl.crypto[method] = libCrypto[method]
 }
 
-module.exports = ark;
+module.exports = bpl;
