@@ -1,7 +1,7 @@
 {
   "name": "bpljs",
   "version": "0.2.0",
-  "description": "JavaScript library for sending Ark transactions from the client or server",
+  "description": "JavaScript library for sending Bpl transactions from the client or server",
   "main": "index.js",
   "scripts": {
     "test": "mocha test/bpl.js test/*/*"
