@@ -1,10 +1,10 @@
 var Buffer = require("buffer/").Buffer;
 var should = require("should");
-var ark = require("../../index.js");
+var bpl = require("../../index.js");
 
 describe("transaction.js", function () {
 
-  var transaction = ark.transaction;
+  var transaction = bpl.transaction;
 
   it("should be object", function () {
     (transaction).should.be.type("object");
@@ -110,13 +110,13 @@ describe("transaction.js", function () {
       });
 
       it("should be signed correctly", function () {
-        var result = ark.crypto.verify(trs);
+        var result = bpl.crypto.verify(trs);
         result.should.equal(true);
       });
 
       it("should not be signed correctly now", function () {
         trs.amount = 10000;
-        var result = ark.crypto.verify(trs);
+        var result = bpl.crypto.verify(trs);
         result.should.equal(false);
       });
     });
@@ -148,7 +148,7 @@ describe("transaction.js", function () {
       }
 
       // The transaction to replay
-      var old_transaction = ark.transaction.createTransaction('AacRfTLtxAkR3Mind1XdPCddj1uDkHtwzD', 1, null, 'randomstring');
+      var old_transaction = bpl.transaction.createTransaction('AacRfTLtxAkR3Mind1XdPCddj1uDkHtwzD', 1, null, 'randomstring');
 
       // Decode signature
       var decode = bip66.decode(Buffer(old_transaction.signature, "hex"));
@@ -170,20 +170,20 @@ describe("transaction.js", function () {
       new_signature = BIP66_encode(r.toBuffer(r.toDERInteger().length), s.toBuffer(s.toDERInteger().length)).toString('hex');
 
       console.log("OLD TRANSACTION : ");
-      console.log("TXID " + ark.crypto.getId(old_transaction));
-      console.log("VERIFY " + ark.crypto.verify(old_transaction));
+      console.log("TXID " + bpl.crypto.getId(old_transaction));
+      console.log("VERIFY " + bpl.crypto.verify(old_transaction));
       console.log("SIG " + old_transaction.signature + "\n");
 
-      ark.crypto.verify(old_transaction).should.equal(true);
+      bpl.crypto.verify(old_transaction).should.equal(true);
 
       old_transaction.signature = new_signature;
 
       console.log("NEW TRANSACTION : ");
-      console.log("TXID " + ark.crypto.getId(old_transaction));
-      console.log("VERIFY " + ark.crypto.verify(old_transaction));
+      console.log("TXID " + bpl.crypto.getId(old_transaction));
+      console.log("VERIFY " + bpl.crypto.verify(old_transaction));
       console.log("SIG " + old_transaction.signature);
 
-      ark.crypto.verify(old_transaction).should.equal(false);
+      bpl.crypto.verify(old_transaction).should.equal(false);
 
     });
 
@@ -193,7 +193,7 @@ describe("transaction.js", function () {
     var createTransaction = transaction.createTransaction;
     var trs = null;
     var secondSecret = "second secret";
-    var keys = ark.crypto.getKeys(secondSecret);
+    var keys = bpl.crypto.getKeys(secondSecret);
 
     it("should be a function", function () {
       (createTransaction).should.be.type("function");
@@ -285,24 +285,24 @@ describe("transaction.js", function () {
       });
 
       it("should be signed correctly", function () {
-        var result = ark.crypto.verify(trs);
+        var result = bpl.crypto.verify(trs);
         (result).should.equal(true);
       });
 
       it("should be second signed correctly", function () {
-        var result = ark.crypto.verifySecondSignature(trs, keys.publicKey);
+        var result = bpl.crypto.verifySecondSignature(trs, keys.publicKey);
         (result).should.equal(true);
       });
 
       it("should not be signed correctly now", function () {
         trs.amount = 10000;
-        var result = ark.crypto.verify(trs);
+        var result = bpl.crypto.verify(trs);
         (result).should.equal(false);
       });
 
       it("should not be second signed correctly now", function () {
         trs.amount = 10000;
-        var result = ark.crypto.verifySecondSignature(trs, keys.publicKey);
+        var result = bpl.crypto.verifySecondSignature(trs, keys.publicKey);
         (result).should.equal(false);
       });
     });
