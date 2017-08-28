@@ -1,10 +1,10 @@
 var Buffer = require("buffer/").Buffer;
 var should = require("should");
-var ark = require("../../index.js");
+var bpl = require("../../index.js");
 
 describe("vote.js", function () {
 
-  var vote = ark.vote;
+  var vote = bpl.vote;
 
   it("should be ok", function () {
     (vote).should.be.ok;
@@ -21,7 +21,7 @@ describe("vote.js", function () {
   describe("#createVote", function () {
     var createVote = vote.createVote,
       vt = null,
-      publicKey = ark.crypto.getKeys("secret").publicKey,
+      publicKey = bpl.crypto.getKeys("secret").publicKey,
       publicKeys = ["+" + publicKey];
 
     it("should be ok", function () {
@@ -46,7 +46,7 @@ describe("vote.js", function () {
       });
 
       it("should have recipientId string equal to sender", function () {
-        (vt).should.have.property("recipientId").and.be.type("string").and.equal(ark.crypto.getAddress(publicKey))
+        (vt).should.have.property("recipientId").and.be.type("string").and.equal(bpl.crypto.getAddress(publicKey))
       });
 
       it("should have amount number equal to 0", function () {
@@ -98,24 +98,24 @@ describe("vote.js", function () {
       });
 
       it("should be signed correctly", function () {
-        var result = ark.crypto.verify(vt);
+        var result = bpl.crypto.verify(vt);
         (result).should.be.ok;
       });
 
       it("should be second signed correctly", function () {
-        var result = ark.crypto.verifySecondSignature(vt, ark.crypto.getKeys("second secret").publicKey);
+        var result = bpl.crypto.verifySecondSignature(vt, bpl.crypto.getKeys("second secret").publicKey);
         (result).should.be.ok;
       });
 
       it("should not be signed correctly now", function () {
         vt.amount = 100;
-        var result = ark.crypto.verify(vt);
+        var result = bpl.crypto.verify(vt);
         (result).should.be.not.ok;
       });
 
       it("should not be second signed correctly now", function () {
         vt.amount = 100;
-        var result = ark.crypto.verifySecondSignature(vt, ark.crypto.getKeys("second secret").publicKey);
+        var result = bpl.crypto.verifySecondSignature(vt, bpl.crypto.getKeys("second secret").publicKey);
         (result).should.be.not.ok;
       });
 

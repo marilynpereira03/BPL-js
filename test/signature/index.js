@@ -1,10 +1,10 @@
 var Buffer = require("buffer/").Buffer;
 var should = require("should");
-var ark = require("../../index.js");
+var bpl = require("../../index.js");
 
 describe("signature.js", function () {
 
-  var signature = ark.signature;
+  var signature = bpl.signature;
 
   it("should be ok", function () {
     (signature).should.be.ok;
