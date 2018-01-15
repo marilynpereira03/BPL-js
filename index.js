@@ -33,7 +33,7 @@ let HDNode = require("./lib/hdnode.js");
 let ECSignature = require("./lib/ecsignature.js");
 
 class Bpl {
-  constructor(config) {
+  constructor(config = {}) {
 		//default config for wbx
     let defaultConfig = {
       interval: 15,
