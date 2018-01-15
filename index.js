@@ -53,11 +53,11 @@ class Bpl {
 		this.transaction = new Transaction();
 		this.vote = new Vote();
 		this.ipfs = new Ipfs();
-		this.networks = new Networks();
+		this.networks = Networks;
     this.slots = new Slots();
-		this.ECPair = new ECPair();
-		this.HDNode = new HDNode();
-		this.ECSignature = new ECSignature();
+		this.ECPair = ECPair;
+		this.HDNode = HDNode;
+		this.ECSignature = ECSignature;
 
     this.slots.setConfig(finalConfig);
 		this.crypto.setConfig(finalConfig);
