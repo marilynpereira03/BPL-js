@@ -47,20 +47,20 @@ class Bpl {
 			networkVersion: config.networkVersion || defaultConfig.networkVersion
     };
 
-		this.crypto = new Crypto();
-		this.delegate = new Delegate();
-		this.signature = new Signature();
-		this.transaction = new Transaction();
-		this.vote = new Vote();
-		this.ipfs = new Ipfs();
+		this.crypto = new Crypto(finalConfig);
+		this.delegate = new Delegate(finalConfig);
+		this.signature = new Signature(finalConfig);
+		this.transaction = new Transaction(finalConfig);
+		this.vote = new Vote(finalConfig);
+		this.ipfs = new Ipfs(finalConfig);
 		this.networks = Networks;
-    this.slots = new Slots();
+    this.slots = new Slots(finalConfig);
 		this.ECPair = ECPair;
 		this.HDNode = HDNode;
 		this.ECSignature = ECSignature;
 
-    this.slots.setConfig(finalConfig);
-		this.crypto.setConfig(finalConfig);
+    // this.slots.setConfig(finalConfig);
+		// this.crypto.setConfig(finalConfig);
   }
 
 //TODO
