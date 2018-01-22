@@ -31,16 +31,11 @@ let Slots = require("./lib/time/slots.js");
 let ECPair = require("./lib/ecpair.js");
 let HDNode = require("./lib/hdnode.js");
 let ECSignature = require("./lib/ecsignature.js");
+//default config for BPL
+let defaultConfig = require("./config.json");
 
 class Bpl {
   constructor(config = {}) {
-		//default config for wbx
-    let defaultConfig = {
-      interval: 15,
-      delegates: 4,
-			networkVersion: 73
-    };
-
     let finalConfig = {
       interval: config.interval || defaultConfig.interval,
       delegates: config.delegates || defaultConfig.delegates,
