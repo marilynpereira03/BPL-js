@@ -1,46 +1,25 @@
-/*bpl = {
-	crypto : require("./lib/transactions/crypto.js"),
-	delegate : require("./lib/transactions/delegate.js"),
-	signature : require("./lib/transactions/signature.js"),
-	transaction : require("./lib/transactions/transaction.js"),
-	vote : require("./lib/transactions/vote.js"),
-	ipfs : require("./lib/transactions/ipfs.js"),
-	networks : require("./lib/networks.js"),
-	slots : require("./lib/time/slots.js"),
-	ECPair : require("./lib/ecpair.js"),
-	HDNode : require("./lib/hdnode.js"),
-	ECSignature : require("./lib/ecsignature.js"),
-}
+var Crypto = require('./lib/transactions/crypto.js');
+var Delegate = require('./lib/transactions/delegate.js');
+var Signature = require('./lib/transactions/signature.js');
+var Transaction = require('./lib/transactions/transaction.js');
+var Vote = require('./lib/transactions/vote.js');
+var Ipfs = require('./lib/transactions/ipfs.js');
+var Networks = require('./lib/networks.js');
+var Slots = require('./lib/time/slots.js');
+var ECPair = require('./lib/ecpair.js');
+var HDNode = require('./lib/hdnode.js');
+var ECSignature = require('./lib/ecsignature.js');
 
-// extra aliases for bitcoinlib-js compatibility
-var libCrypto = require('./lib/crypto.js')
-for (var method in libCrypto) {
-	bpl.crypto[method] = libCrypto[method]
-}
-
-module.exports = bpl;*/
-
-let Crypto = require("./lib/transactions/crypto.js");
-let Delegate = require("./lib/transactions/delegate.js");
-let Signature = require("./lib/transactions/signature.js");
-let Transaction = require("./lib/transactions/transaction.js");
-let Vote = require("./lib/transactions/vote.js");
-let Ipfs = require("./lib/transactions/ipfs.js");
-let Networks = require("./lib/networks.js");
-let Slots = require("./lib/time/slots.js");
-let ECPair = require("./lib/ecpair.js");
-let HDNode = require("./lib/hdnode.js");
-let ECSignature = require("./lib/ecsignature.js");
 //default config for BPL
-let defaultConfig = require("./config.json");
+var defaultConfig = require('./config.json');
 
 class Bpl {
-  constructor(config = {}) {
-    let finalConfig = {
-      interval: config.interval || defaultConfig.interval,
-      delegates: config.delegates || defaultConfig.delegates,
+	constructor(config = {}) {
+		var finalConfig = {
+			interval: config.interval || defaultConfig.interval,
+			delegates: config.delegates || defaultConfig.delegates,
 			networkVersion: config.networkVersion || defaultConfig.networkVersion
-    };
+		};
 
 		this.crypto = new Crypto(finalConfig);
 		this.delegate = new Delegate(finalConfig);
@@ -49,21 +28,11 @@ class Bpl {
 		this.vote = new Vote(finalConfig);
 		this.ipfs = new Ipfs(finalConfig);
 		this.networks = Networks;
-    this.slots = new Slots(finalConfig);
+		this.slots = new Slots(finalConfig);
 		this.ECPair = ECPair;
 		this.HDNode = HDNode;
 		this.ECSignature = ECSignature;
-
-    // this.slots.setConfig(finalConfig);
-		// this.crypto.setConfig(finalConfig);
-  }
-
-//TODO
-	// extra aliases for bitcoinlib-js compatibility
-	// var libCrypto = require('./lib/crypto.js')
-	// for (var method in libCrypto) {
-	// 	bpl.crypto[method] = libCrypto[method]
-	// }
+	}
 }
 
 module.exports = Bpl;

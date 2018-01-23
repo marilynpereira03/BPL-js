@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/Blockpool.io/bpl-js.git"
   },
-  "author": "Raj Sigh <rsingh@blockpool.io>, FX Thoorens <fx@ark.io>, Guillaume Verbal <doweig@ark.io>, Boris Povod <boris@crypti.me>, Oliver Beddows <oliver@lisk.io>",
+  "author": "Raj Singh <rsingh@blockpool.io>, FX Thoorens <fx@ark.io>, Guillaume Verbal <doweig@ark.io>, Boris Povod <boris@crypti.me>, Oliver Beddows <oliver@lisk.io>",
   "license": "MIT",
   "dependencies": {
     "bigi": "^1.4.2",
@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "proxyquire": "^1.7.10",
-    "sinon": "^1.17.7",
-    "should": "=11.1.0"
+    "should": "=11.1.0",
+    "sinon": "^1.17.7"
   }
 }
