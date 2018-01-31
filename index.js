@@ -15,11 +15,14 @@ const defaultConfig = require('./config.json');
 
 class BplClass {
 	constructor(config = {}) {
+		console.log('Config >> ',config);
 		var finalConfig = {
 			interval: config.interval || defaultConfig.interval,
 			delegates: config.delegates || defaultConfig.delegates,
 			networkVersion: config.networkVersion || defaultConfig.networkVersion
 		};
+		console.log('defaultConfig >> ',defaultConfig);
+		console.log('Final >> ',finalConfig);
 
 		this.crypto = new crypto.CryptoClass(finalConfig);
 		this.delegate = new delegate.DelegateClass(finalConfig);
