@@ -16,7 +16,7 @@ const defaultConfig = require('./config.json');
 class BplClass {
 	constructor(config = {}) {
 		console.log('Config >> ',config);
-		var finalConfig = {
+		let finalConfig = {
 			interval: config.interval || defaultConfig.interval,
 			delegates: config.delegates || defaultConfig.delegates,
 			networkVersion: config.networkVersion || defaultConfig.networkVersion
@@ -38,7 +38,7 @@ class BplClass {
 	}
 }
 
-var bpljs = {
+let bpljs = {
 	crypto,
 	delegate,
 	signature,
