@@ -1,5 +1,6 @@
 {
   "delegates": 201,
+  "epochTime": "2017-12-21T13:00:00.000Z",
   "interval": 15,
   "network": {
 		"messagePrefix": "Bpl Signed Message:\n",

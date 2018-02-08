@@ -17,8 +17,9 @@ class BplClass {
 	constructor(config) {
 		config = config || {};
 		let finalConfig = {
-			interval: config.interval || defaultConfig.interval,
 			delegates: config.delegates || defaultConfig.delegates,
+			epochTime: config.epochTime || defaultConfig.epochTime,
+			interval: config.interval || defaultConfig.interval,
 			network: config.network || defaultConfig.network
 		};
 
