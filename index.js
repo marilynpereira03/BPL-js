@@ -8,6 +8,7 @@ const slots = require('./lib/time/slots.js');
 const ECPair = require('./lib/ecpair.js');
 const HDNode = require('./lib/hdnode.js');
 const ECSignature = require('./lib/ecsignature.js');
+const customAddress = require('./lib/customAddress.js');
 
 //default config for BPL
 const defaultConfig = require('./config.json');
@@ -32,6 +33,7 @@ class BplClass {
 		this.ECPair = ECPair;
 		this.HDNode = HDNode;
 		this.ECSignature = ECSignature;
+		this.customAddress = customAddress;
 	}
 }
 
@@ -46,7 +48,7 @@ let bpljs = {
 	ECPair,
 	HDNode,
 	ECSignature,
+	customAddress,
 	BplClass
 };
-
 module.exports = bpljs;
