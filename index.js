@@ -4,11 +4,11 @@ const signature = require('./lib/transactions/signature.js');
 const transaction = require('./lib/transactions/transaction.js');
 const vote = require('./lib/transactions/vote.js');
 const ipfs = require('./lib/transactions/ipfs.js');
-const networks = require('./lib/networks.js');
 const slots = require('./lib/time/slots.js');
 const ECPair = require('./lib/ecpair.js');
 const HDNode = require('./lib/hdnode.js');
 const ECSignature = require('./lib/ecsignature.js');
+const customAddress = require('./lib/customAddress.js');
 
 //default config for BPL
 const defaultConfig = require('./config.json');
@@ -29,11 +29,11 @@ class BplClass {
 		this.transaction = new transaction.TransactionClass(finalConfig);
 		this.vote = new vote.VoteClass(finalConfig);
 		this.ipfs = new ipfs.IpfsClass(finalConfig);
-		this.networks = networks;
 		this.slots = new slots.SlotsClass(finalConfig);
 		this.ECPair = ECPair;
 		this.HDNode = HDNode;
 		this.ECSignature = ECSignature;
+		this.customAddress = customAddress;
 	}
 }
 
@@ -44,12 +44,11 @@ let bpljs = {
 	transaction,
 	vote,
 	ipfs,
-	networks,
 	slots,
 	ECPair,
 	HDNode,
 	ECSignature,
+	customAddress,
 	BplClass
 };
-
 module.exports = bpljs;
