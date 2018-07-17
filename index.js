@@ -9,7 +9,7 @@ const ECPair = require('./lib/ecpair.js');
 const HDNode = require('./lib/hdnode.js');
 const ECSignature = require('./lib/ecsignature.js');
 const customAddress = require('./lib/customAddress.js');
-
+const poll = require('./lib/transactions/poll.js');
 //default config for BPL
 const defaultConfig = require('./config.json');
 
@@ -30,6 +30,7 @@ class BplClass {
 		this.vote = new vote.VoteClass(finalConfig);
 		this.ipfs = new ipfs.IpfsClass(finalConfig);
 		this.slots = new slots.SlotsClass(finalConfig);
+		this.poll =  new poll.PollClass(finalConfig);
 		this.ECPair = ECPair;
 		this.HDNode = HDNode;
 		this.ECSignature = ECSignature;
@@ -45,6 +46,7 @@ let bpljs = {
 	vote,
 	ipfs,
 	slots,
+	poll,
 	ECPair,
 	HDNode,
 	ECSignature,
