@@ -4,6 +4,7 @@ const signature = require('./lib/transactions/signature.js');
 const transaction = require('./lib/transactions/transaction.js');
 const vote = require('./lib/transactions/vote.js');
 const ipfs = require('./lib/transactions/ipfs.js');
+const autoUpdate = require('./lib/transactions/autoUpdate.js');
 const slots = require('./lib/time/slots.js');
 const ECPair = require('./lib/ecpair.js');
 const HDNode = require('./lib/hdnode.js');
@@ -30,6 +31,7 @@ class BplClass {
 		this.vote = new vote.VoteClass(finalConfig);
 		this.ipfs = new ipfs.IpfsClass(finalConfig);
 		this.slots = new slots.SlotsClass(finalConfig);
+		this.autoUpdate = new autoUpdate.AutoUpdateClass(finalConfig);
 		this.ECPair = ECPair;
 		this.HDNode = HDNode;
 		this.ECSignature = ECSignature;
@@ -45,6 +47,7 @@ let bpljs = {
 	vote,
 	ipfs,
 	slots,
+	autoUpdate,
 	ECPair,
 	HDNode,
 	ECSignature,
